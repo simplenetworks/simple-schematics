@@ -11,7 +11,7 @@ export interface <%= classify(name) %>Filters {
 }
 
 export interface <%= classify(name) %>DTO extends BaseDTO {
-    <% for (let dto of dtos) { %><%= dto.property %><%= dto.nullable ? '?' : '' %>: <%= dto.type === "DateString" ? "string" : dto.type %>;
+    <% for (let dto of dtos) { %><%= dto.property %><%= dto.nullable ? '?' : '' %>: <%= dto.type %>;
     <% } %>
 }
 

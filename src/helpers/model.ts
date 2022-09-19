@@ -14,6 +14,8 @@ export function getProperties(node: ts.InterfaceDeclaration | ts.ClassDeclaratio
 
     for (let prop of node.members) {
         const property: string = (prop.name as ts.Identifier).escapedText.toString();
+        const typeString = prop.getText().split(": ")[1].replace(";", "");
+
         const type = checker.getTypeAtLocation(prop);
         const typeName = checker.typeToString(type);
 
@@ -21,7 +23,7 @@ export function getProperties(node: ts.InterfaceDeclaration | ts.ClassDeclaratio
 
         result.push({
             property,
-            type: typeName,
+            type: typeString === "DateString" ? typeString : typeName,
             nullable
         });
     }

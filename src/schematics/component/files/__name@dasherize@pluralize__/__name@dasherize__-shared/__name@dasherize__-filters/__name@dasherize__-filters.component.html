@@ -9,10 +9,10 @@
         <input matInput [matDatepicker]="picker<%= classify(filter.property) %>" formControlName="<%= camelize(filter.property) %>" placeholder="<%= classify(filter.property) %>"/><mat-label><%= classify(filter.property) %></mat-label>
         <mat-datepicker-toggle matSuffix [for]="picker<%= classify(filter.property) %>"></mat-datepicker-toggle>
         <mat-datepicker #picker<%= classify(filter.property) %>></mat-datepicker>
-        <% } else if(filter.type[0].toUpperCase() === filter.type[0] && !filter.endsWith("[]")) { %>
+        <% } else if(filter.type[0].toUpperCase() === filter.type[0] && !filter.type.endsWith("[]")) { %>
         <mat-label><%= classify(filter.property) %></mat-label>
         <app-<%= dasherize(filter.type) %>-field formControlName="<%= camelize(filter.property) %>"></app-<%= dasherize(filter.type) %>-field>
-        <% } else if(filter.type[0].toUpperCase() === filter.type[0] && filter.endsWith("[]")) { %><mat-label><%= classify(filter.property) %></mat-label>
+        <% } else if(filter.type[0].toUpperCase() === filter.type[0] && filter.type.endsWith("[]")) { %><mat-label><%= classify(filter.property) %></mat-label>
         <app-<%= pluralize(dasherize(filter.type?.replace("[]", ""))) %>-field formControlName="<%= camelize(filter.property) %>"></app-<%= pluralize(dasherize(filter.type?.replace("[]", ""))) %>-field>
         <% } else if(filter.type === "boolean") { %>
         <mat-checkbox matInput color="primary" formControlName="<%= camelize(filter.property) %>">
