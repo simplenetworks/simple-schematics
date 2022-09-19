@@ -1,0 +1,11 @@
+<h2 class="u-flex-full">
+  <span>
+    <mat-icon>groups</mat-icon><%= classify(name) %>
+  </span>
+</h2>
+<div class="mat-elevation-z8" style="margin: 0 15px;">
+  <<%= dasherize(name) %>-list [<%= pluralize(camelize(name)) %>]="<%= pluralize(camelize(name)) %>" [defaultFilters]="defaultFilters" [total]="total" [canAdd]="true" [canEdit]="true"
+    (onSortChange)="sortChange($event)" (onPageChange)="pageChange($event)" (onFilterChange)="filtersChange($event)"
+    (onAdd<%= classify(name) %>)="add<%= classify(name) %>()" (onEdit<%= classify(name) %>)="edit<%= classify(name) %>($event)"></<%= dasherize(name) %>-list>
+</div>
+

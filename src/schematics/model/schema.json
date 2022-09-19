@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "Model",
+  "title": "Custom model options Schema",
+  "type": "object",
+  "description": "Creates a new model definition in the given or default project.",
+  "properties": {
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path at which to create the model file, relative to the current workspace. Default is a folder with the same name as the component in the project root.",
+      "visible": false
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the entity.",
+      "x-prompt": "What name would you like to use for the entity?"
+    },
+    "modelPath": {
+      "type": "string",
+      "description": "The path of the models",
+      "x-prompt": "What's the models path?"
+    }
+  },
+  "required": [
+    "name",
+    "modelPath"
+  ]
+}

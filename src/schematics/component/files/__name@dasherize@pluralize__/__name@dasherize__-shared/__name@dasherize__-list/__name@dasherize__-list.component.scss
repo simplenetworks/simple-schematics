@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+td.mat-cell {
+  padding: 10px !important;
+}
+th.mat-cell {
+  margin-left: 4px !important;
+}
+.mat-row:hover {
+  background-color: #fdf9f5;
+  transition: all 0.3s ease-in-out;
+}
+
+

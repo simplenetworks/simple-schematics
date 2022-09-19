@@ -1,0 +1,30 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add schematics to the project.",
+      "factory": "./schematics/ng-add/index#ngAdd",
+      "schema": "./schematics/ng-add/schema.json"
+    },
+    "laravel-service": {
+      "description": "Create laravel service for the given entity.",
+      "factory": "./schematics/laravel-service/index#laravelService",
+      "schema": "./schematics/laravel-service/schema.json"
+    },
+    "model": {
+      "description": "Create model for the given entity.",
+      "factory": "./schematics/model/index#model",
+      "schema": "./schematics/model/schema.json"
+    },
+    "store": {
+      "description": "Create store for the given entity.",
+      "factory": "./schematics/store/index#store",
+      "schema": "./schematics/store/schema.json"
+    },
+    "component": {
+      "description": "Create fields for the given entity.",
+      "factory": "./schematics/component/index#component",
+      "schema": "./schematics/component/schema.json"
+    }
+  }
+}

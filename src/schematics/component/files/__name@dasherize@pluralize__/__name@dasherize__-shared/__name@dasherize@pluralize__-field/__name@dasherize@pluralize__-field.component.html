@@ -1,0 +1,17 @@
+<mat-chip-list #chipList>
+  <mat-chip color="primary" *ngFor="let <%= camelize(name) %> of value; let i = index;" [removable]="true"
+    [selectable]="false" (removed)="remove<%= classify(name) %>(i)" (click)="edit<%= classify(name) %>(i)">
+    <span *ngIf="!<%= camelize(name) %>?.headProject">
+      {{ <%= camelize(name) %>?.stringRepresentation }}
+    </span>
+    <mat-icon matChipRemove>cancel</mat-icon>
+  </mat-chip>
+  <button type="button" style="margin: 5px" matTooltip="Aggiungi <%= name %>" (click)="add<%= classify(name) %>()"
+    mat-icon-button mat-raised-button>
+    <mat-icon>add</mat-icon>
+  </button>
+
+</mat-chip-list>
+<!-- <app-<%= camelize(name) %>-edit *ngIf="openEdit" [<%= camelize(name) %>]="current<%= classify(name) %>" (onClose)="close()"
+  (onSave)="save($event)">
+</app-<%= camelize(name) %>-edit> -->

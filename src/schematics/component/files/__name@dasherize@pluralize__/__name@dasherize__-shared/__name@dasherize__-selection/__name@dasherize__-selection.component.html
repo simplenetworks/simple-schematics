@@ -1,0 +1,15 @@
+<header mat-dialog-title class="u-flex-full">
+  <span>
+    Seleziona <%= name %>
+  </span>
+</header>
+<mat-dialog-content>
+  <<%= dasherize(name) %>-list [<%= pluralize(camelize(name)) %>]="<%= pluralize(camelize(name)) %>" [defaultFilters]="defaultFilters" [displayedColumns]="displayedColumns" [total]="total"
+    [canSelect]="true" (onSortChange)="sortChange($event)" (onPageChange)="pageChange($event)"
+    (onFilterChange)="filtersChange($event)" (onSelect<%= classify(name) %>)="select<%= classify(name) %>($event)"></<%= dasherize(name) %>-list>
+</mat-dialog-content>
+<mat-dialog-actions class="u-flex-full">
+  <span>
+  </span>
+  <button mat-raised-button color="basic" type="button" (click)="close()">Chiudi</button>
+</mat-dialog-actions>

@@ -1,0 +1,37 @@
+<mat-expansion-panel style="margin-bottom: 16px;">
+  <mat-expansion-panel-header>
+    Filtra
+  </mat-expansion-panel-header>
+  <form [formGroup]="filtersForm" novalidate>
+    <div class="u-flex-full">
+      <% for(let filter of filters) { %><% if(filter.type.endsWith('DTO[]') || !filter.type.endsWith('[]')) { %>
+      <mat-form-field class="u-full-width"><% if(filter.type === "Date") { %>
+        <input matInput [matDatepicker]="picker<%= classify(filter.property) %>" formControlName="<%= camelize(filter.property) %>" placeholder="<%= classify(filter.property) %>"/><mat-label><%= classify(filter.property) %></mat-label>
+        <mat-datepicker-toggle matSuffix [for]="picker<%= classify(filter.property) %>"></mat-datepicker-toggle>
+        <mat-datepicker #picker<%= classify(filter.property) %>></mat-datepicker>
+        <% } else if(filter.type[0].toUpperCase() === filter.type[0] && !filter.endsWith("[]")) { %>
+        <mat-label><%= classify(filter.property) %></mat-label>
+        <app-<%= dasherize(filter.type) %>-field formControlName="<%= camelize(filter.property) %>"></app-<%= dasherize(filter.type) %>-field>
+        <% } else if(filter.type[0].toUpperCase() === filter.type[0] && filter.endsWith("[]")) { %><mat-label><%= classify(filter.property) %></mat-label>
+        <app-<%= pluralize(dasherize(filter.type?.replace("[]", ""))) %>-field formControlName="<%= camelize(filter.property) %>"></app-<%= pluralize(dasherize(filter.type?.replace("[]", ""))) %>-field>
+        <% } else if(filter.type === "boolean") { %>
+        <mat-checkbox matInput color="primary" formControlName="<%= camelize(filter.property) %>">
+          <mat-label><%= classify(filter.property) %></mat-label>
+        </mat-checkbox>
+        <% } else { %><mat-label><%= classify(filter.property) %></mat-label>
+        <input type="<% if(filter.type === "number") { %>number<% } else { %>text<% } %>" matInput formControlName="<%= camelize(filter.property) %>">
+        <% } %><mat-error>Campo obbligatorio</mat-error>
+      </mat-form-field>
+    <% } %><% } %></div>
+
+    <div class="u-flex-full">
+      <span class="u-flex-full">
+        <button class="filter" mat-raised-button [disabled]="filtersForm.pristine" color="primary"
+          (click)="applyFilters()">Filtra</button>
+        <button mat-icon-button *ngIf="!filtersForm.pristine" (click)="resetFilters()" matTooltip="Reset">
+          <mat-icon>replay</mat-icon>
+        </button>
+      </span>
+    </div>
+  </form>
+</mat-expansion-panel>

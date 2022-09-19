@@ -1,0 +1,13 @@
+label {
+  min-height: 24px;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+:host.floating label {
+  opacity: 1;
+}
+
+:host {
+  cursor: pointer;
+}

@@ -1,0 +1,56 @@
+<header mat-dialog-title class="u-flex-full">
+  <span>
+    <span *ngIf="<%= camelize(name) %>">Modifica <%= camelize(name) %>e: {{<%= camelize(name) %>.stringRepresentation}}</span>
+    <span *ngIf="!<%= camelize(name) %>">Nuovo <%= camelize(name) %>e</span>
+  </span>
+  <span *ngIf="<%= camelize(name) %>">
+    <button mat-icon-button [mat-menu-trigger-for]="actionMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu x-position="before" overlapTrigger="false" #actionMenu="matMenu">
+      <button mat-menu-item (click)="delete<%= classify(name) %>()">
+        <mat-icon>delete</mat-icon>
+        Elimina
+      </button>
+    </mat-menu>
+  </span>
+</header>
+<mat-dialog-content>
+  <form [formGroup]="<%= camelize(name) %>Form" novalidate>
+    <div class="u-flex-full">
+      <% for(let dto of dtos) { %><% if((dto.type.endsWith('DTO[]') || !dto.type.endsWith('[]')) && !dto.property.endsWith("Id")) { %>
+      <mat-form-field class="u-full-width"><% if(dto.classType === "Date") { %>
+        <mat-label><%= classify(dto.property) %></mat-label>
+        <input matInput [matDatepicker]="picker<%= classify(dto.property) %>" formControlName="<%= camelize(dto.property) %>" placeholder="<%= classify(dto.property) %>"/>
+        <mat-datepicker-toggle matSuffix [for]="picker<%= classify(dto.property) %>"></mat-datepicker-toggle>
+        <mat-datepicker #picker<%= classify(dto.property) %>></mat-datepicker>
+        <% } else if(dto.type.endsWith("DTO")) { %>
+        <mat-label><%= classify(dto.property) %></mat-label>
+        <app-<%= dasherize(dto.type?.replace("DTO", "")) %>-field formControlName="<%= camelize(dto.property) %>"></app-<%= dasherize(dto.type?.replace("DTO", "")) %>-field>
+        <% } else if(dto.type.endsWith("DTO[]")) { %>
+        <mat-label><%= classify(dto.property) %></mat-label>
+        <app-<%= pluralize(dasherize(dto.type?.replace("DTO[]", ""))) %>-field formControlName="<%= camelize(dto.property) %>"></app-<%= pluralize(dasherize(dto.type?.replace("DTO[]", ""))) %>-field>
+        <% } else if(dto.type === "boolean") { %>
+        <mat-checkbox matInput color="primary" formControlName="<%= camelize(dto.property) %>">
+          <mat-label><%= classify(dto.property) %></mat-label>
+        </mat-checkbox>
+        <% } else { %>
+        <mat-label><%= classify(dto.property) %></mat-label>
+        <input type="<% if(dto.type === "number") { %>number<% } else { %>text<% } %>" matInput formControlName="<%= camelize(dto.property) %>">
+        <% } %><mat-error>Campo obbligatorio</mat-error>
+      </mat-form-field>
+    <% } %><% } %></div>
+  </form>
+  <!-- {{<%= camelize(name) %>Form.value | json}}  -->
+
+</mat-dialog-content>
+<mat-dialog-actions class="u-flex-full">
+  <span>
+    <button mat-raised-button color="basic" type="reset" (click)="revert()"
+      [disabled]="<%= camelize(name) %>Form.pristine">Reset</button>
+    <button mat-raised-button color="primary" (click)="save()"
+      [disabled]="<%= camelize(name) %>Form.pristine || !<%= camelize(name) %>Form.valid">Salva</button>
+    <span class="fill-remaining"></span>
+  </span>
+  <button mat-raised-button color="basic" type="button" (click)="close()">Chiudi</button>
+</mat-dialog-actions>

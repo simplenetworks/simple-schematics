@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "SubscriptionComponentSchematicsNgAdd",
+    "title": "Custom library for extending Angular Schematics",
+    "type": "object",
+    "properties": {
+        "defaultCollection": {
+            "type": "boolean",
+            "default": true,
+            "description": "Add simple-schematics to schematicCollections",
+            "x-prompt": "Do you want to add simple-schematics to schematicCollections?",
+            "alias": "d"
+        }
+    },
+    "required": []
+}

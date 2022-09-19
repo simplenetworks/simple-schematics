@@ -1,0 +1,9 @@
+label {
+  min-height: 18px;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+:host.floating label {
+  opacity: 1;
+}
