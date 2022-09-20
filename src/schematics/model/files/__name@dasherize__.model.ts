@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
 
-import { Base, BaseDTO } from './base.model';
+import { Base, BaseDTO, DateString } from './base.model';
 import { formatDateForBackend } from 'src/app/helpers/time.utils';
 <% for (let dto of dtos) { %><% if (dto.type.endsWith('DTO') || dto.type.endsWith("DTO[]")) { %>
 import { <%= classify(dto.type).replace("[]", "") %>, <%= classify(dto.type.split("DTO")[0].replace("[]", "")) %> } from './<%= dasherize(dto.type.split("DTO")[0].replace("[]", "")) %>.model'; <% } %> <% } %>
@@ -39,9 +39,9 @@ export class <%= classify(name) %> extends Base {
         <% for (let dto of dtos) { %><%= camelize(name) %>.<%= camelize(dto.property) %> = formModel.<% if(dto.property.endsWith("id")) { %><%= camelize(dto.property.split("id")[0]) %>?.id;<% } else if(dto.property.endsWith("ids")) { %><%= pluralize(camelize(dto.property.split("id")[0])) %>?.map((obj: any) => obj?.id);<% } else { %><%= camelize(dto.property) %>;<% } %>
         <% } %>
         if (original) {
-            <%= name %>.id = original.id;
+            <%= camelize(name) %>.id = original.id;
         }
-        return <%= name %>;
+        return <%= camelize(name) %>;
     }
 
     get stringRepresentation(): string {

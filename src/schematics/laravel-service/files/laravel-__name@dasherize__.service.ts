@@ -67,11 +67,11 @@ export class Laravel<%= classify(name) %>Service {
         });
     }
 
-    public upsert(<%= dasherize(name) %>:<%= classify(name) %>DTO): Observable<<%= classify(name) %>DTO>{
-        if(<%= dasherize(name) %>.id) {
-            return this.httpClient.put<<%= classify(name) %>DTO>(`${this.ROUTES.store}`, {<%= dasherize(name) %>});
+    public upsert(<%= camelize(name) %>:<%= classify(name) %>DTO): Observable<<%= classify(name) %>DTO>{
+        if(<%= camelize(name) %>.id) {
+            return this.httpClient.put<<%= classify(name) %>DTO>(`${this.ROUTES.store}`, {<%= camelize(name) %>});
         } else {
-            return this.httpClient.post<<%= classify(name) %>DTO>(`${this.ROUTES.store}`, {<%= dasherize(name) %>});
+            return this.httpClient.post<<%= classify(name) %>DTO>(`${this.ROUTES.store}`, {<%= camelize(name) %>});
         }
     }
 

@@ -1,7 +1,7 @@
 import { createSelector } from '@ngrx/store';
 
 import { select<%= pluralize(classify(name)) %>tate } from 'src/app/store/reducers';
-import { <%= pluralize(classify(name)) %>tate } from 'src/app/store/reducers/<%= dasherize(name) %>.reducer';
+import { <%= pluralize(classify(name)) %>State } from 'src/app/store/reducers/<%= dasherize(name) %>.reducer';
 
 // <%= classify(name) %> Selectors
 

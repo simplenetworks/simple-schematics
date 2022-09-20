@@ -6,7 +6,6 @@ import { Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { <%= classify(name) %> } from 'src/app/commons/models/<%= dasherize(name) %>.model';
 import { AlertService } from 'src/app/commons/services/alert.service';
-import { PivaValidator } from 'src/app/commons/validators/piva.validator';
 import * as <%= classify(name) %>Actions from 'src/app/store/actions/<%= dasherize(name) %>.actions';
 import { AppState } from 'src/app/store/reducers';
 
