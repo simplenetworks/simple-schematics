@@ -22,6 +22,8 @@ export function model(_options: any): Rule {
         _options.modelPath = normalize('/' + dirname((_options.modelPath) + '/' as Path));
 
         const [dtoProperties, filtersProperties] = loadModel(_tree, _options);
+        const modelPath = _options.modelPath;
+
         delete _options.modelPath;
 
         const templateSource = apply(
@@ -34,7 +36,8 @@ export function model(_options: any): Rule {
                 underscore: strings.underscore,
                 pluralize: plural,
                 dtos: dtoProperties,
-                filters: filtersProperties
+                filters: filtersProperties,
+                modelPath
             }),
             move(_options.path as string),
         ]);
