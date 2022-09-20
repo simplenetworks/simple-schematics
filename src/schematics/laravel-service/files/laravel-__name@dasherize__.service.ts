@@ -16,10 +16,10 @@ export class Laravel<%= classify(name) %>Service {
     
     private get ROUTES() {
         return {
-            list: environment.baseUrl + "/api/<%= dasherize(pluralize(name)) %>",
-            show: environment.baseUrl + "/api/<%= dasherize(name) %>",
-            store: environment.baseUrl + "/api/<%= dasherize(name) %>",
-            destroy: environment.baseUrl + "/api/<%= dasherize(name) %>",
+            list: environment.baseUrl + "/api/<%= underscore(pluralize(name)) %>",
+            show: environment.baseUrl + "/api/<%= underscore(name) %>",
+            store: environment.baseUrl + "/api/<%= underscore(name) %>",
+            destroy: environment.baseUrl + "/api/<%= underscore(name) %>",
         };
     }
 

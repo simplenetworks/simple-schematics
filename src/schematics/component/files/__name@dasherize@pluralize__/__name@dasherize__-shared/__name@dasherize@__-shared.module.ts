@@ -8,6 +8,7 @@ import { <%= classify(name) %>FiltersComponent } from "./<%= dasherize(name) %>-
 import { <%= classify(name) %>SelectionComponent } from "./<%= dasherize(name) %>-selection/<%= dasherize(name) %>-selection.component";
 import { <%= pluralize(classify(name)) %>FieldComponent } from "./<%= pluralize(dasherize(name)) %>-field/<%= pluralize(dasherize(name)) %>-field.component";
 import { <%= classify(name) %>FieldComponent } from "./<%= dasherize(name) %>-field/<%= dasherize(name) %>-field.component";
+import { <%= classify(name) %>EditComponent } from "./<%= dasherize(name) %>-edit/<%= dasherize(name) %>-edit.component";
 
 @NgModule({
   declarations: [
@@ -15,19 +16,24 @@ import { <%= classify(name) %>FieldComponent } from "./<%= dasherize(name) %>-fi
     <%= classify(name) %>FiltersComponent,
     <%= classify(name) %>SelectionComponent,
     <%= classify(name) %>sFieldComponent,
-    <%= classify(name) %>FieldComponent
+    <%= classify(name) %>FieldComponent,
+    <%= classify(name) %>EditComponent,
   ],
   imports: [
     SharedModule,
     NgxMaterialTimepickerModule.setLocale('it-IT'),
     MatChipsModule
   ],
+  entryComponents: [
+    <%= classify(name) %>EditComponent
+  ],
   exports: [
     <%= classify(name) %>ListComponent,
     <%= classify(name) %>FiltersComponent,
     <%= classify(name) %>SelectionComponent,
     <%= pluralize(classify(name)) %>FieldComponent,
-    <%= classify(name) %>FieldComponent
+    <%= classify(name) %>FieldComponent,
+    <%= classify(name) %>EditComponent,
   ]
 })
 export class <%= classify(name) %>SharedModule { }

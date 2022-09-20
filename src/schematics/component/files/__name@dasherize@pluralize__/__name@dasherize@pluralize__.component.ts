@@ -29,7 +29,7 @@ export class <%= pluralize(classify(name)) %>Component implements OnInit {
 
   total: Observable<number>;
   private _includes: string[] = [
-    <% for(let dto of dtos) { %><% if(dto.type.endsWith("DTO") || dto.type.endsWith("DTO[]")) { %>"<%= dto.property.replace("DTO", "").replace("[]", "") %>"<% } %><% } %>
+    <% for(let dto of dtos) { %><% if(dto.type.endsWith("DTO") || dto.type.endsWith("DTO[]")) { %>"<%= dto.property.replace("DTO", "").replace("[]", "") %>", <% } %><% } %>
   ];
 
   constructor(private store$: Store<AppState>) { }

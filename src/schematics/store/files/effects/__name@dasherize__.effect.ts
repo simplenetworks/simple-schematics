@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
-import { <%= classify(name) %>EditComponent } from 'src/app/modules/home/<%= pluralize(dasherize(name)) %>/<%= dasherize(name) %>-edit/<%= dasherize(name) %>-edit.component';
+import { <%= classify(name) %>EditComponent } from 'src/app/modules/home/<%= pluralize(dasherize(name)) %>/<%= dasherize(name) %>-shared/<%= dasherize(name) %>-edit/<%= dasherize(name) %>-edit.component';
 import { <%= classify(name) %>SelectionComponent } from 'src/app/modules/home/<%= pluralize(dasherize(name)) %>/<%= dasherize(name) %>-shared/<%= dasherize(name) %>-selection/<%= dasherize(name) %>-selection.component';
 import { AlertService } from 'src/app/commons/services/alert.service';
 import { Laravel<%= classify(name) %>Service } from 'src/app/commons/services/backend/laravel-<%= dasherize(name) %>.service';

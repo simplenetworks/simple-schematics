@@ -4,9 +4,9 @@ import { Component, forwardRef, HostBinding, Input, OnDestroy, Optional, Self } 
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
-import { <%= classify(name) %>, <%= classify(name) %>Filters } from 'src/app/commons/models/<%= camelize(name) %>.model';
+import { <%= classify(name) %>, <%= classify(name) %>Filters } from 'src/app/commons/models/<%= dasherize(name) %>.model';
 
-export const <%= pluralize(dasherize(name)).toUpperCase() %>_MAT_FORM_FIELD_CONTROL: any = {
+export const <%= pluralize(underscore(name)).toUpperCase() %>_MAT_FORM_FIELD_CONTROL: any = {
   provide: MatFormFieldControl,
   useExisting: forwardRef(() => <%= pluralize(classify(name)) %>FieldComponent),
 };
@@ -15,7 +15,7 @@ export const <%= pluralize(dasherize(name)).toUpperCase() %>_MAT_FORM_FIELD_CONT
   selector: "app-<%= pluralize(dasherize(name)) %>-field",
   templateUrl: "./<%= pluralize(dasherize(name)) %>-field.component.html",
   styleUrls: ["./<%= pluralize(dasherize(name)) %>-field.component.scss"],
-  providers: [<%= pluralize(dasherize(name)).toUpperCase() %>_MAT_FORM_FIELD_CONTROL],
+  providers: [<%= pluralize(underscore(name)).toUpperCase() %>_MAT_FORM_FIELD_CONTROL],
   host: {
     "[class.floating]": "shouldLabelFloat",
     "[id]": "id",

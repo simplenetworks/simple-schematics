@@ -7,7 +7,7 @@ import { <%= classify(name) %> } from 'src/app/commons/models/<%= dasherize(name
 import { PAGE_SIZE_OPTIONS } from 'src/app/helpers/table.helper';
 import { <%= classify(name) %>Filters } from 'src/app/commons/models/<%= dasherize(name) %>.model';
 
-export type <%= pluralize(classify(name)) %>Column = "id", <% for(let dto of dtos) {%>"<%= camelize(dto.property) %>" | <%}%>"actions";
+export type <%= pluralize(classify(name)) %>Column = "id" | <% for(let dto of dtos) {%>"<%= camelize(dto.property) %>" | <%}%>"actions";
 
 @Component({
   selector: '<%= dasherize(name) %>-list',
