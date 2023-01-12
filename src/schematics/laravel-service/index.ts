@@ -31,6 +31,7 @@ export function laravelService(_options: any): Rule {
             url('./files'), [
             template({
                 ..._options,
+                camelize: strings.camelize,
                 classify: strings.classify,
                 dasherize: strings.dasherize,
                 underscore: strings.underscore,
